@@ -1,1 +1,81 @@
 /* You can add global styles to this file, and also import other style files */
+
+// colors
+$headerBg : #6d676e;
+$headerColor: #1b1b1e;
+$mainBg : #FFFFFF;
+$mainColor: #faa916;
+$footerBg : #1b1b1e;
+$footerColor: #FFFFFF;
+
+:root{
+    font-family: "Roboto", sans-serif;
+}
+
+@mixin setTheme(){}
+@mixin setHover($element){
+    @if $element==":nth-child(3)" {
+        cursor: pointer;
+    }
+    &:hover{
+        background-color: lightness($color: #000000) !important;
+    }
+    //   }
+}
+
+.basicBtn{
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover{
+        background-color: green;
+    }
+}
+
+body{
+    height: 100vh;
+    margin: 0;
+    .parent {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 50px 1fr 120px;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        height: 100%;
+        
+        @for $i from 1 to 4 {
+            div:nth-child(#{$i}) {
+              padding: 0 1rem;
+              @include setHover(&)
+            }
+          }
+        
+        .header { 
+            grid-area: 1 / 1 / 2 / 2; 
+            background-color: $headerBg;
+            color: $headerColor;
+        }
+        .main { 
+            grid-area: 2 / 1 / 4 / 2; 
+            background-color: $mainBg;
+            color: $mainColor;
+
+            .context{
+                .btn-list{
+                    display: flex;
+                    .login{
+                        @extend .basicBtn
+                    }
+                }
+            }
+        }
+        .footer { 
+            grid-area: 4 / 1 / 5 / 2; 
+            background-color: $footerBg;
+            color: $footerColor;
+        }
+    }
+}
