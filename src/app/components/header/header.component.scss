@@ -1,0 +1,26 @@
+@import '../../../partials/variables';
+.header-parent{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .theme-toggler{
+        height: 24px;
+        width: 50px;
+        border-radius: 12px;
+        background-color: var(--theme-toggler-bg);
+        position: relative;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+
+        .toggler{
+            padding: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--theme-toggler-handle-color);
+            position: absolute;
+            left: 3px;
+        }
+    }
+}
