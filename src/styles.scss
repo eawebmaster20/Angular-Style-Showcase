@@ -1,81 +1,118 @@
-/* You can add global styles to this file, and also import other style files */
+@import './partials/mixins';
 
-// colors
-$headerBg : #6d676e;
-$headerColor: #1b1b1e;
-$mainBg : #FFFFFF;
-$mainColor: #faa916;
-$footerBg : #1b1b1e;
-$footerColor: #FFFFFF;
-
-:root{
-    font-family: "Roboto", sans-serif;
+:root {
+  font-family: "Roboto", sans-serif;
 }
 
-@mixin setTheme(){}
-@mixin setHover($element){
-    @if $element==":nth-child(3)" {
-        cursor: pointer;
-    }
-    &:hover{
-        background-color: lightness($color: #000000) !important;
-    }
-    //   }
-}
+body {
+  height: 100vh;
+  margin: 0;
+  background-color: var(--main-bg);
+  .dark-theme {
+    @include theme(dark);
+  }
+  .light-theme {
+    @include theme(light);
+  }
 
-.basicBtn{
-    background-color: blue;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    &:hover{
-        background-color: green;
-    }
-}
+  .parent {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 1fr 120px;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    height: 100%;
+    background-color: var(--main-bg);
 
-body{
-    height: 100vh;
-    margin: 0;
-    .parent {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 50px 1fr 120px;
-        grid-column-gap: 0px;
-        grid-row-gap: 0px;
-        height: 100%;
-        
-        @for $i from 1 to 4 {
-            div:nth-child(#{$i}) {
-              padding: 0 1rem;
-              @include setHover(&)
-            }
-          }
-        
-        .header { 
-            grid-area: 1 / 1 / 2 / 2; 
-            background-color: $headerBg;
-            color: $headerColor;
+    .header {
+      grid-area: 1 / 1 / 2 / 2;
+      background-color: var(--header-bg);
+      color: var(--header-color);
+    }
+
+    .main {
+      grid-area: 2 / 1 / 4 / 2;
+      background-color: var(--main-bg);
+      color: var(--main-color);
+      display: grid;
+      place-content: center;
+      text-align: center;
+      .context {
+        .text{
+            font-size: 64px;
         }
-        .main { 
-            grid-area: 2 / 1 / 4 / 2; 
-            background-color: $mainBg;
-            color: $mainColor;
-
-            .context{
-                .btn-list{
-                    display: flex;
-                    .login{
-                        @extend .basicBtn
-                    }
-                }
+        .action{
+            & span{
+              padding: 1rem 2rem;
+              background-color: var(--footer-bg);
             }
         }
-        .footer { 
-            grid-area: 4 / 1 / 5 / 2; 
-            background-color: $footerBg;
-            color: $footerColor;
-        }
+      }
+      .logistics{
+        @extend .context
+
+      }
     }
+
+    .footer {
+      grid-area: 4 / 1 / 5 / 2;
+      background-color: var(--footer-bg);
+      color: var(--footer-color);
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
 }
+
+// @import './partials/mixins';
+// :root{
+//     font-family: "Roboto", sans-serif;
+// }
+
+// body{
+//     height: 100vh;
+//     margin: 0;
+//     .dark-theme & {
+//         @include theme(dark);
+//     }
+//     .light-theme & {
+//         @include theme(light);        
+//     }
+//     .parent {
+//         display: grid;
+//         grid-template-columns: 1fr;
+//         grid-template-rows: 50px 1fr 120px;
+//         grid-column-gap: 0px;
+//         grid-row-gap: 0px;
+//         height: 100%;
+//         background-color: $mainBg;
+        
+//         .header { 
+//             grid-area: 1 / 1 / 2 / 2; 
+//             background-color: $headerBg;
+//             color: $headerColor;
+//         }
+//         .main { 
+//             grid-area: 2 / 1 / 4 / 2; 
+//             background-color: $mainBg;
+//             color: $mainColor;
+
+//             .context{
+//                 // @extend .bg
+//             }
+//         }
+//         .footer { 
+//             grid-area: 4 / 1 / 5 / 2; 
+//             background-color: $footerBg;
+//             color: $footerColor;
+//             height: 100px;
+//             display: flex; 
+//             justify-content: center;
+//             flex-direction: column;
+//             align-items: center;
+//         }
+//     }
+// }
