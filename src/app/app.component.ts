@@ -4,6 +4,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { MainHeroComponent } from './components/main-hero/main-hero.component';
 import { MainContextComponent } from './components/main-context/main-context.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ThemeService } from './services/theme/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -20,4 +21,5 @@ import { FooterComponent } from './components/footer/footer.component';
 })
 export class AppComponent {
   title = 'AngularStyleShowcase';
+  constructor(public themeService: ThemeService){}
 }

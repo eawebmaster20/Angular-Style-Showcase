@@ -1,10 +1,9 @@
-<div class="parent">
+<div class="parent" [class]="themeService.darkTheme ? 'light-theme':'dark-theme'">
   <div class="header">
     <app-header/>
   </div>
   <div class="main">
-    <app-main-hero/>
-    <app-main-context/>
+    <router-outlet/>
   </div>
   <div class="footer">
     <app-footer/>
