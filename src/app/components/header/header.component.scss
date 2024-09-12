@@ -21,6 +21,11 @@
             background-color: var(--theme-toggler-handle-color);
             position: absolute;
             left: 3px;
+            transition: left 0.3s ease;
         }
+
     }
+    // &.dark-mode .toggler {
+    //     left: 20px;
+    //   }
 }
