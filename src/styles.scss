@@ -13,6 +13,9 @@ body {
   }
   .light-theme {
     @include theme(light);
+    .toggler {
+      left: 28px !important;
+    }
   }
 
   .parent {
@@ -45,6 +48,9 @@ body {
             & span{
               padding: 1rem 2rem;
               background-color: var(--footer-bg);
+            }
+            &:hover{
+              cursor: pointer;
             }
         }
       }
